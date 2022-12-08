@@ -11,8 +11,7 @@ const timerBtn = document.querySelector('.timer-btn'),
     stopSeconds = document.querySelector('.stop-seconds'),
     stopMSeconds = document.querySelector('.stop-mSeconds'),
     volumeIcon = document.querySelector('.fa-volume-low'),
-    timeline = document.querySelector('.timeline'),
-    alarmAudio = new Audio('sound/alarm.mp3');
+    timeline = document.querySelector('.timeline');
 
 
 
@@ -63,7 +62,6 @@ startBtn.addEventListener('click', () => {
         timerCounter.style.borderBottom = 'none'
         timerInterval = setInterval(() => {
             if (timerSeconds.textContent == 00 && timerMinutes.textContent == 0) {
-                alarmAudio.play();
                 clearInterval(timerInterval)
             } else if (timerSeconds.textContent == 00) {
                 timerSeconds.textContent = 59;
@@ -119,7 +117,6 @@ startBtn.addEventListener('click', () => {
 timerStopBtn.addEventListener('click', () => {
     // stopping timer events when clicking stop button
     if (timerBtn.classList[1] === 'active') {
-        alarmAudio.pause()
         clearInterval(timerInterval)
         startBtn.style.display = 'inline-block'
         timerStopBtn.style.display = 'none'
@@ -137,7 +134,6 @@ timerStopBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
     // resting timer when clicking reset button
     if (timerBtn.classList[1] === 'active') {
-        alarmAudio.pause()
         clearInterval(timerInterval)
         timerMinutes.textContent = 5;
         timerSeconds.textContent = '00';
@@ -207,4 +203,4 @@ timerInput.addEventListener('keypress', (e) => {
         timerMinutes.textContent = timerMinutesValue
         timerSeconds.textContent = timerSecondsValue
     }
-})
+});
